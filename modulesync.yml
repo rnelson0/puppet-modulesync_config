@@ -1,0 +1,5 @@
+---
+git_base: 'git@github.com:'
+namespace: rnelson0
+branch: modulesync
+message: "Update from rnelson0's modulesync"

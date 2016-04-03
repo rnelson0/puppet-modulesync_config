@@ -1,0 +1,26 @@
+---
+language: ruby
+sudo: false
+cache: bundler
+notifications:
+  email: false
+branches:
+  only:
+    - master
+bundler_args: --without development system_tests
+before_install: rm Gemfile.lock || true
+script: bundle exec rake test
+matrix:
+  fast_finish: true
+  include:
+<% @configs['includes'].each do |include| -%>
+  - rvm: <%= include['rvm'] %>
+    env: <%= include['env'] %>
+<% end -%>
+<% if @configs['allow_failures'] -%>
+<%   @configs['allow_failures'].each do |allow_failures| -%>
+  allow_failures:
+    - rvm: <%= allow_failures['rvm'] %>
+      env: <%= allow_failures['env'] %>
+<%   end -%>
+<% end -%>
