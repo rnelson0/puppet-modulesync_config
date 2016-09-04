@@ -1,5 +1,4 @@
 ---
 - puppet-certs
 - puppet-domain_join
-- puppet-hiera_resources
 - puppet-local_user
